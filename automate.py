@@ -41,4 +41,45 @@ if os.path.isfile(tangan):
 else:
     print("HAAA mana dia pergi?")
 
+# sekarang nak susun for real haha, started at 3.02 pm markas 4g 14/1/2026
+
+susun_fail = os.listdir(juggle)[0:10]
+cuti_key = ["XL254172", "half day"]
+work_key = ["4c11", "ip", "AP", "MOP", "UAT","4g4"]
+cuti_file = []
+work_file =[]
+print("")
+print("-- HASIL PENCARIAN HARI INI --")
+for f in susun_fail:
+
+    if any(c.lower() in f.lower() for c in cuti_key):
+        cuti_file.append(f)
+        print(f"CUTI JUMPA ---- {f}")
+    elif any(w.lower() in f.lower() for w in work_key):
+        work_file.append(f)
+        print(f"HUHUH KERJA / ->")
+    else:
+        print(f"WADUH XXXXX  lain lah bos {f.lower()} XXXXX")
+
+
+
+
+folder_cuti = "Semua Cuti"
+print(f"Pindah ke Folder -> {folder_cuti}")
+path_cuti = os.path.join(DOWNLOADS,folder_cuti)
+os.makedirs(path_cuti, exist_ok=True)
+path_juggle = ""
+os.makedirs(os.path.join(DOWNLOADS,"Semua Kerja"), exist_ok=True)
+
+
+for i in cuti_file:
+     path_juggle = os.path.join(juggle,i)
+     shutil.move(path_juggle,path_cuti)
+     print(f"{i} dah masuk dalam {path_cuti}")
+
+for i in work_file:
+     path_juggle = os.path.join(juggle,i)
+     shutil.move(path_juggle, os.path.join(DOWNLOADS,"Semua Kerja"))
+     print(f"{i} dah masuk dalam {os.path.join(DOWNLOADS,"Semua Kerja")}")
+
 
