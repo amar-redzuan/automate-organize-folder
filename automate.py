@@ -29,6 +29,17 @@ holiday_key = """
 XL254172
 half day
 """
+
+resume_key ="""
+resume
+"""
+
+uitm_key = """
+cs259
+AMAR_CS2595ADE
+AMAR_CS2597A
+DEGREE
+"""
 sourceFolder = "JUGGLE"
 destinationFolder = "TEST[REAL]"
 os.makedirs(namaPath(destinationFolder), exist_ok=True)
@@ -40,13 +51,21 @@ while fileNo < 3:
     print(f"file {fileNo} : {select_file} \n")
     # Work Key
     if any(select_file.lower() in k.strip().lower() for k in work_key):
-        os.makedirs(namaPath(folder), exist_ok=True)
+        # os.makedirs(namaPath(folder), exist_ok=True)  nanti tambah
         moveFile(select_file, sourceFolder, "Semua Kerja")
         print(f"file {select_file} -> Semua Kerja")
     # Holiday Key
     elif(any(select_file.lower() in k.strip().lower() for k in holiday_key)):
         moveFile(select_file, sourceFolder, "Semua Cuti")
         print(f"file {select_file} -> Semua Cuti")
+    # Resume Key
+    elif(any(select_file.lower() in k.strip().lower() for k in resume_key)):
+        moveFile(select_file, sourceFolder, "Resume")
+        print(f"file {select_file} -> Resume")
+        # Resume Key
+    elif(any(select_file.lower() in k.strip().lower() for k in uitm_key)):
+        moveFile(select_file, sourceFolder, "UiTM File")
+        print(f"file {select_file} -> UiTM File")
     # No Key
     else:
         print("Sorry Bos, fail takda :( \n")
